@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="icon" href="favicon.ico">
+</head>
+
 <?php
 
 use Illuminate\Contracts\Http\Kernel;
@@ -53,3 +60,7 @@ $response = $kernel->handle(
 )->send();
 
 $kernel->terminate($request, $response);
+
+?>
+<script src="js/jquery-3.6.0.js"></script>
+</html>

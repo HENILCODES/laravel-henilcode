@@ -7,7 +7,7 @@
 .Visible-hide{
     visibility: hidden;
 }
-.main{
+.login-main{
     max-width: 370px;
     margin: auto;
     margin-top: 60px;
@@ -27,17 +27,17 @@ body{
     background-color: white;
     margin: 15px 8px;
 }
-.header{
+.user-header{
     margin-bottom: 35px;
     display: block;
 }
-.header .logo_name{
+.user-header .logo_name{
     letter-spacing: 2px;
     color: #300171b6;
     font-size: 16px;
     font-weight: bold;
 }
-.header h5{
+.user-header h5{
     font-size: 22px;
     color: #314e8b;
     margin-top: 10px;
@@ -45,7 +45,7 @@ body{
 form{
     text-align: left;
 }
-.header img{
+.user-header img{
     width: 62px;
     border-radius: 50%;
     border: 2px solid #385185;
