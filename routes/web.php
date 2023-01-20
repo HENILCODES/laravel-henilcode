@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('login', function () {
@@ -23,4 +24,8 @@ Route::get('login', function () {
 
 Route::get('signup', function () {
     return view('signup');
+});
+
+Route::get('source', function () {
+    return view('source');
 });

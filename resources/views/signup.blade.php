@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="icon" href="favicon.ico">
 <head>
     <title> Sign Up | Henil Code</title>
     <link rel="stylesheet" href="css/login.css">
@@ -14,23 +19,23 @@
                 </div>
             </div>
             <div class="infor">
-                <form autocomplete="off" action="UserLog_phcode.php" method="post">
+                <form autocomplete="off" action="" method="post">
                     <div class="input_box">
                         <span class="TagIn">User name</span>
-                        <input type="text" name="U_name" class="input" placeholder="type username" id="user" required title="User Name">
+                        <input type="text" name="name" class="input" placeholder="type username" id="user" required title="User Name">
                     </div>
                     <div class="input_box">
                         <span class="TagIn">Email Address</span>
-                        <input type="email" name="U_email" class="input" placeholder="type email" id="Uemail" required title="Email Address">
+                        <input type="email" name="email" class="input" placeholder="type email" id="Uemail" required title="Email Address">
                     </div>
                     <div class="input_box">
                         <span class="TagIn">password</span>
                         <div class="passwor">
-                            <input type="password" name="U_password" class="inputx" placeholder="type Password" id="Upassword" required title="Password">
+                            <input type="password" name="password" class="inputx" placeholder="type Password" id="Upassword" required title="Password">
                             <span class="bi bi-eye-fill" id="show_hide_password"></span>
                         </div>
                     </div>
-                    <button class="Log_Button" type="submit" id="login" name="U_Signup">Sign Up</button>
+                    <button class="Log_Button" type="submit" id="login" name="signup">Sign Up</button>
                 </form>
             </div>
             <div class="or">
