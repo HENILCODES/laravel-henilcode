@@ -14,7 +14,7 @@
             <div class="user-header">
                 <img src="favicon.ico" alt="not load">
                 <div class="h-data">
-                    <a href="/" class="logo_name">Henil Codes</a>
+                    <a href="/" class="logo_name">Henil Codes {{ $title}} </a>
                     <h5>Create Account</h5>
                 </div>
             </div>

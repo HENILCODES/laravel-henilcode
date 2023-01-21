@@ -6,7 +6,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -42,16 +41,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public static function select()
-    {
-        return DB::select("select * from users");
-    }
-    public static function insert()
-    {
-        $array = ["name" => 'Henil', "email" => 's@gmail.com'];
-        $keys = implode(',', array_keys($array));
-        $values = "'" . implode("','", $array) . "'";
-        return DB::insert("insert into temp ($keys) values (?)", [$values]);
-    }
 }

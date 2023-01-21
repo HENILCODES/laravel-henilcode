@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="icon" href="favicon.ico">
@@ -39,7 +39,6 @@
             <div class="manu_link"><a href="/"  class="{{ Request::is('/') ? 'active':''}}"> <i class="fa fa-home"></i>
                     Home</a></div>
             <div class="manu_link"><a href="source"  class="{{ Request::is('source') ? 'active':''}}"> <i class="bi bi-forward"></i> source</a></div>
-            <div class="manu_link"><a href="project.html"><i class="bi bi-forward"></i> project </a></div>
             <div class="manu_link"><a href="about.html"> <i class="bi bi-person"></i> about</a></div>
             <div class="manu_link"><a href="https://henil.rf.gd/SignUp/"><i class="bi bi-link-45deg"></i> Sign Up</a></div>
         </div>
@@ -57,12 +56,15 @@
     @yield('body')
 </div>
 <div class="FooterB center">
+    {{-- {{$h}}
+    @if ($h)
+        <h1>He</h1>
+    @endif  --}}
     <div class="Bfooter center">
         <div class="nav_link">
             <ul class="center">
                 <li><a href="/">Home</a></li>
                 <li><a href="source">source</a></li>
-                <li><a href="project.html">project</a></li>
                 <li><a href="about.html">about</a></li>
                 <li><a href="https://henil.rf.gd/SignUp/">SignUp</a></li>
             </ul>
