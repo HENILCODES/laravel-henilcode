@@ -26,8 +26,6 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Route::pattern('id', '[0-9]+');   //that is globali define for id only number in route
-
         $this->configureRateLimiting();
 
         $this->routes(function () {
