@@ -19,7 +19,9 @@
                 </div>
             </div>
             <div class="infor">
-                <form autocomplete="off" action="" method="post">
+                <form autocomplete="off" action="/product" method="post">
+                    @method('PUT');
+                    @csrf;
                     <div class="input_box">
                         <span class="TagIn">User name</span>
                         <input type="text" name="name" class="input" placeholder="type username" id="user" required title="User Name">

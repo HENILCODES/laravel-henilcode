@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Temp;
 use Illuminate\Http\Request;
+use mysqli;
 
 class ProductController extends Controller
 {
@@ -25,7 +27,11 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return "create";
+        $customer = new Temp();
+        echo "<pre>";
+        print_r($customer->all()->toArray());
+        // return $;
+        exit;
     }
 
     /**
@@ -37,6 +43,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $customer = new Temp();
+        $customer->name = 'HEnil';
+        $customer->email = md5('ddd');
+        $customer->password = md5('ddd');
+        $customer->save();
     }
 
     /**

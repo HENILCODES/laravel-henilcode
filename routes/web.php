@@ -1,8 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SimpleController;
+use App\Http\Controllers\SingleActionController;
+use App\Models\Temp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Expr\Print_;
+
 // use Illuminate\Support\Facades\View;
 
 /*
@@ -16,13 +21,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", function () {
-    return view("home");
-});
+Route::get("/", [SimpleController::class, 'sempleFunction']);
+
+Route::get('/single', SingleActionController::class);
 
 Route::get("/inde", [ProductController::class, 'index'])->name('indexRoute');
 
 Route::match(['get', 'post'], '/many', [ProductController::class, 'index']);
+
+// Route::get('/d', function () {
+//     return redirect()->route('login');
+// });
 
 Route::any("login", function () {
     return view("login");
@@ -54,6 +63,13 @@ Route::fallback(function () {
 });
 
 Route::any('/userD', function (Request $request) {
-    
-    return "<pre>"  .$request['U_name'] . " ,". $request['U_password'];
+
+    return "<pre>"  . $request['U_name'] . " ," . $request['U_password'];
 });
+
+
+// Route::get("/customer", function () {
+//     $customer = Temp::all();
+//     echo "<pre>";
+//     print_r($customer->toArray());
+// });
