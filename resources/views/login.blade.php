@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
     <link rel="icon" href="favicon.ico">
     <title> Log in | Henil Code</title>
-    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="../css/user.css">
 <head>
 <body>
     <div class="login-main">

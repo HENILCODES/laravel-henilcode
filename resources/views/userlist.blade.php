@@ -17,7 +17,7 @@
                 </div>
                 <div class="text-end pb-4 d-flex justify-content-between">
                     <input type="search" autocomplete="off" class="form-control w-25 me-5" id="search" placeholder="search">
-                    <button class="btn btn-success shadow" data-bs-toggle="modal" data-bs-target="#AddAdmin">Add</button>
+                    <a href="/signup" class="btn btn-success shadow">Add</a>
                 </div>
                 <div class="overflow-auto" style="height: 600px;">
 

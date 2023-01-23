@@ -15,9 +15,11 @@ class UserController extends Controller
     public function index()
     {
         //
-        return "index";
+        $user =  UserModel::all();
+        $datas = $user->toArray();
+        return view('userlist',['data'=>$datas]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -25,9 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $user =  UserModel::all();
-        $datas = $user->toArray();
-        return view('userlist',['data'=>$datas]);
+        return view('signup');
     }
 
     /**

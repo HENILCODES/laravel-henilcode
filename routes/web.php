@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SingleActionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::view('signup', 'signup')->name('signup');
+Route::get('new',[ UserController::class,'create']);
 Route::view('login', 'login')->name('login');
 
 Route::prefix('check')->group(function () {
@@ -26,5 +27,6 @@ Route::prefix('check')->group(function () {
 });
 
 
-Route::get('user/table', [UserController::class, 'create'])->name('userlist');
+Route::get('user/table', [UserController::class, 'index'])->name('userlist');
 
+Route::get("/invokable", SingleActionController::class);
