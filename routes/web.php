@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::view('signup', 'signup')->name('signup');
+Route::view('login', 'login')->name('login');
+
+Route::prefix('check')->group(function () {
+    Route::resource('signup', UserController::class)->only('store');
+});
+
+
+Route::get('user/table', [UserController::class, 'create'])->name('userlist');
+
