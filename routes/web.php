@@ -21,3 +21,5 @@ Route::get('/', function () {
 });
 
 Route::resource('product', ProductController::class);
+
+Route::get('product/id/{id}', [ProductController::class, 'destroy'])->name('product-delete');

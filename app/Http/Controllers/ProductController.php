@@ -56,9 +56,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
-
-    }
+        $product = Product::find($id);
+        echo "<pre>";
+        print_r($product->id);
+    }   
 
     /**
      * Show the form for editing the specified resource.
@@ -68,11 +69,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
         $product = Product::find($id);
-        return view('product.index')->with('editProduct',$product);
+        return $product;
+        // return view('product.index')->with('editProduct',$product);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -104,6 +104,6 @@ class ProductController extends Controller
         //
         $product = Product::find($id);
         $product->delete();
-        return view("product.index");
+        return redirect()->back();
     }
 }

@@ -19,32 +19,33 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Product</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <a type="button" class="btn-close" href="{{ url('product/') }}"></a>
                     </div>
                     <div class="modal-body">
-                        <form class="row g-3 m-auto" autocomplete="off" action="/product/" method="put"
+                        <form class="row g-3 m-auto" autocomplete="off" action="{{ url('product/') }}" method="put"
                             enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="input-group">
-                                <spna class="input-group-text justify-content-center"> Name</spna>
+                                <spna class="fw-bold input-group-text justify-content-center"> Name</spna>
                                 <input required type="text" class="form-control" name="name"
                                     placeholder="enter product name" value="{{ $editProduct->name }}">
                             </div>
                             <div class="input-group">
-                                <spna class="input-group-text justify-content-center"> price</spna>
+                                <spna class="fw-bold input-group-text justify-content-center"> price</spna>
                                 <input required type="number" class="form-control" name="price"
                                     placeholder="enter product price" value="{{ $editProduct->price }}">
                             </div>
                             <div class="input-group">
-                                <spna class="input-group-text justify-content-center">image</spna>
+                                <spna class="fw-bold input-group-text justify-content-center">image</spna>
                                 <input type="file" name="photo" class="form-control" accept="image/*">
                             </div>
                             <button type="submit" class="btn btn-primary">Edit</button>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <a type="button" class="btn btn-secondary" href="/product/">Close</a> {{-- Click Close to redirect index --}}
+                        <a type="button" class="btn btn-secondary" href="{{ url('product/') }}">Close</a>
+                        {{-- Click Close to redirect index --}}
                     </div>
                 </div>
             </div>
@@ -61,22 +62,22 @@
                 </div>
                 <div class="modal-body">
                     <div class="container my-3">
-                        <form class="row g-3 m-auto" autocomplete="off" action="/product/" method="post"
+                        <form class="row g-3 m-auto" autocomplete="off" action="{{ url('product/') }}" method="post"
                             enctype="multipart/form-data">
                             @method('POST')
                             @csrf
                             <div class="input-group">
-                                <spna class="input-group-text justify-content-center"> Name</spna>
+                                <spna class="fw-bold input-group-text justify-content-center"> Name</spna>
                                 <input required type="text" class="form-control" name="name"
                                     placeholder="enter product name">
                             </div>
                             <div class="input-group">
-                                <spna class="input-group-text justify-content-center"> price</spna>
+                                <spna class="fw-bold input-group-text justify-content-center"> price</spna>
                                 <input required type="number" class="form-control" name="price"
                                     placeholder="enter product price">
                             </div>
                             <div class="input-group">
-                                <spna class="input-group-text justify-content-center">image</spna>
+                                <spna class="fw-bold input-group-text justify-content-center">image</spna>
                                 <input type="file" name="photo" class="form-control" accept="image/*">
                             </div>
                             <div class="mt-5 text-center">
@@ -127,17 +128,19 @@
                                         <td> {{ $value->created_at }}</td>
                                         <td class="d-flex">
                                             {{-- Edit Form data button --}}
-                                            <a class="btn btn-success shadow bi bi-pencil me-3"
-                                                href="/product/{{ $value->id }}/edit"></a>
+                                            <a class="btn btn-success shadow bi bi-pencil me-3 editBT"></a>
+                                            {{-- <a class="btn btn-success shadow bi bi-pencil me-3 "
+                                                href="/product/{{ $value->id }}/edit"></a> --}}
+
                                             {{-- <form action="/photo/" method="DELETE"> --}}
                                             {{-- Delete Form data button --}}
                                             {{-- @method('DELETE') --}}
                                             {{-- @csrf --}}
                                             {{-- <input type="hidden" name="id" value="{{ $value->id }}"> --}}
                                             {{-- <button type="submit" class="btn btn-danger bi bi-trash"></button> --}}
-                                            <a class="btn btn-danger bi bi-trash"
-                                                href="{{ route('product.destroy', [$value->id]) }}" data-method="delete"></a>
                                             {{-- </form> --}}
+                                            <a href="{{ route('product-delete', ['id' => $value->id]) }}"
+                                                class="btn btn-danger bi bi-trash"></a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -152,7 +155,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <script src="../js/search.js"></script>
-
 @if (isset($create))
     <script type="text/javascript">
         $(window).on('load', function() {
@@ -167,5 +169,17 @@
         });
     </script>
 @endif
+<script>
+    $(document).ready(function() {
+        $(".editBT").on("click", function() {
+           $.ajax('http://127.0.0.1:8000/product/3/edit',{
+            success:function(data){
+
+                console.log(data);
+            }
+           })
+        });
+    });
+</script>
 
 </html>
