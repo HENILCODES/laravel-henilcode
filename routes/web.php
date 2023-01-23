@@ -18,15 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-
-Route::get('new',[ UserController::class,'create']);
-Route::view('login', 'login')->name('login');
-
-Route::prefix('check')->group(function () {
-    Route::resource('signup', UserController::class)->only('store');
-});
-
-
-Route::get('user/table', [UserController::class, 'index'])->name('userlist');
-
-Route::get("/invokable", SingleActionController::class);
+Route::resource("product");
