@@ -24,5 +24,6 @@ Route::get('product/new', [ProductController::class, 'create'])->name('product-n
 Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('product-edit');
 Route::get('product/show/{id}', [ProductController::class, 'show'])->name('product-show');
 Route::post('product/store', [ProductController::class, 'store'])->name('product-store');
-Route::any('product/update/', [ProductController::class, 'update'])->name('product-update');
-Route::any('product/delete/{id}', [ProductController::class, 'destroy'])->name('product-delete');
+
+Route::delete('product/delete/{id}', [ProductController::class, 'destroy'])->name('product-delete');
+Route::get('product/update/{id}', [ProductController::class, 'update'])->name('product-update');

@@ -5,11 +5,10 @@
         <div class="py-3">
             <h2 class="text-center">Update Product</h2>
         </div>
-        <form class="row g-3 m-auto" autocomplete="off" action="{{ route('product-update') }}" method="put"
+        <form class="row g-3 m-auto" autocomplete="off" action="{{ route('product-update',['id' => $product->id]) }}" method="put"
             enctype="multipart/form-data">
             @method('PUT')
             @csrf
-            <input type="text" name="id" value="{{ $product->id }}">
             <div class="input-group">
                 <spna class="fw-bold input-group-text justify-content-center"> Name</spna>
                 <input required type="text" class="form-control" name="name" value="{{ $product->name }}"
@@ -21,7 +20,6 @@
                     value="{{ $product->price }}" placeholder="enter product price">
             </div>
             <div class="input-group">
-                <input type="hidden" name="photo_hidden" value="{{ $product->photo }}">
                 <spna class="fw-bold input-group-text justify-content-center">image</spna>
                 <input type="file" name="photo" class="form-control" accept="image/*">
             </div>

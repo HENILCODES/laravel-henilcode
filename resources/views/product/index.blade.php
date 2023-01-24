@@ -41,7 +41,7 @@
                                                 <a href="{{ route('product-edit', ['id' => $value->id]) }}"
                                                     id="{{ $value->id }}"
                                                     class="btn btn-success shadow bi bi-pencil me-3 editBT"></a>
-
+                                                
                                                 <a href="{{ route('product-delete', ['id' => $value->id]) }}"
                                                     class="btn btn-danger bi bi-trash"></a>
                                             </td>
