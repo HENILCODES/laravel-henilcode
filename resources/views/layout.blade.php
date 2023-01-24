@@ -37,8 +37,8 @@
 </nav>
 
 <body>
+    @yield('body')
     <script src="{{ url('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('js/jquery-3.6.0.js') }}"></script>
     <script src="{{ url('js/search.js') }}"></script>
-    @yield('body')
 </body>

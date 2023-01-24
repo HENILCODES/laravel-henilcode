@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SingleActionController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +18,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('product', ProductController::class);
-
-Route::get('product/id/{id}', [ProductController::class, 'destroy'])->name('product-delete');
+// use for product 
+Route::get('product', [ProductController::class, 'index'])->name('product-index');
+Route::get('product/new', [ProductController::class, 'create'])->name('product-new');
+Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('product-edit');
+Route::get('product/show/{id}', [ProductController::class, 'show'])->name('product-show');
+Route::post('product/store', [ProductController::class, 'store'])->name('product-store');
+Route::any('product/update/', [ProductController::class, 'update'])->name('product-update');
+Route::any('product/delete/{id}', [ProductController::class, 'destroy'])->name('product-delete');

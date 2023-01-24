@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -9,45 +7,33 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $product = new Product();
-        $products = $product::all();
-        return view('product.index')->with('products', $products);
+        return view('product.index', ['products' => Product::all()]);
     }
     public function create()
     {
-        return view('product.index')->with('create', true);
+        return view('product.add');
     }
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->name = $request['name'];
-        $product->price = $request['price'];
-        $product->photo = $_FILES['photo']['name'];
-        $product->save();
+        Product::create([
+            'name' => $request['name'],
+            'price' => $request['price'],
+            'photo' => $_FILES['photo']['name']
+        ]);
         return redirect('product/');
     }
     public function show($id)
     {
-        $product = Product::find($id);
-        echo "<pre>";
-        print_r($product->id);
+        return Product::where('id', $id);
     }
     public function edit($id)
     {
-        $product = Product::find($id);
-        return $product;
+        return view('product.edit', ['product' => Product::find($id)]);
     }
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);
-        // $product->name = $request['name'];
-        // $product->price = $request['price'];
-        // $product->photo = $request['photo'];
-
-        $input = $request->all();
-        $product->fill($input)->save();
-        // return view('product.index');
-        return "Edit";
+        Product::where('id', $id)->update(['name' => $request['name'], 'price' => $request['price']]);
+        return redirect('product/');
     }
     public function destroy($id)
     {
