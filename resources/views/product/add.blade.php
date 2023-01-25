@@ -5,7 +5,7 @@
         <div class="py-3">
             <h2 class="text-center">New Product</h2>
         </div>
-        <form class="row g-3 m-auto" autocomplete="off" action="{{ route('product-store') }}" method="post"
+        <form class="row g-3 m-auto" autocomplete="off" action="{{ route('product.store') }}" method="post"
             enctype="multipart/form-data">
             @method('POST')
             @csrf

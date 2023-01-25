@@ -17,13 +17,12 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-        dd($request->all());
         Product::create($request->all());
-        return redirect()->route('product-index');
+        return redirect()->route('product.index');
     }
     public function show($id)
     {
-        return Product::find($id);
+        return view('product.index', ['product' => Product::find($id)]);
     }
     public function edit($id)
     {
@@ -31,15 +30,14 @@ class ProductController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $product = Product::find($id)->fill($request->all())->save();
-        // dd($request->all(),$product);
-        // Product::where('id', $id)->update($product);
-        return redirect()->route('product-index');
+        $products = $request->except(['_method', '_token']);
+        Product::where('id', $id)->update($products);
+        return redirect()->route('product.index');
     }
     public function destroy($id)
     {
         $product = Product::find($id);
         $product->delete();
-        return redirect()->back();
+        return redirect()->route('product.index');
     }
 }

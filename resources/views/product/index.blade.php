@@ -1,4 +1,5 @@
 <title>Product</title>
+
 <body>
     @extends('layout')
     {{-- Edit Product  --}}
@@ -12,7 +13,7 @@
                     <div class="text-end pb-4 d-flex justify-content-between">
                         <input type="search" autocomplete="off" class="form-control w-25 me-5" id="search"
                             placeholder="search">
-                        <a class="btn btn-success shadow" href="{{ route('product-new') }}">Add</a>
+                        <a class="btn btn-success shadow" href="{{ route('product.create') }}">Add</a>
                     </div>
                     <div class="overflow-auto" style="height: 600px;">
 
@@ -27,6 +28,26 @@
                                 <th>Action</th>
                             </thead>
                             <tbody id="Search_table" class="overflow-auto">
+                                @if (isset($product))
+                                    <tr>
+                                        <td> {{ $product->id }}</td>
+                                        <td> {{ $product->name }}</td>
+                                        <td> {{ $product->price }}</td>
+                                        <td> {{ $product->photo }}</td>
+                                        <td> {{ $product->updated_at }}</td>
+                                        <td> {{ $product->created_at }}</td>
+                                        <td>
+                                            {{-- Edit Form data button --}}
+                                            <form action="{{ route('product.destroy',['product'=>$product->id])}}" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <a href="{{ route('product.edit', ['product' => $product->id]) }}"
+                                                    class="btn btn-success shadow bi bi-pencil me-3 editBT"></a>
+                                                <button type="submit" class="btn btn-danger bi bi-trash"></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endif
                                 @if (isset($products))
                                     @foreach ($products as $key => $value)
                                         <tr>
@@ -36,14 +57,17 @@
                                             <td> {{ $value->photo }}</td>
                                             <td> {{ $value->updated_at }}</td>
                                             <td> {{ $value->created_at }}</td>
-                                            <td class="d-flex">
+                                            <td>
                                                 {{-- Edit Form data button --}}
-                                                <a href="{{ route('product-edit', ['id' => $value->id]) }}"
-                                                    id="{{ $value->id }}"
-                                                    class="btn btn-success shadow bi bi-pencil me-3 editBT"></a>
-                                                
-                                                <a href="{{ route('product-delete', ['id' => $value->id]) }}"
-                                                    class="btn btn-danger bi bi-trash"></a>
+                                                <form action="{{ route('product.destroy',['product'=>$value->id])}}" method="post">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <a href="{{ route('product.show', ['product' => $value->id]) }}"
+                                                        class="btn btn-primary bi bi-eye"></a>
+                                                    <a href="{{route('product.edit',['product'=>$value->id])}}"
+                                                        class="btn btn-success shadow bi bi-pencil me-3 editBT"></a>
+                                                    <button type="submit" class="btn btn-danger bi bi-trash"></button>  {{--delete button--}}
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

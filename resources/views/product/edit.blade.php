@@ -5,7 +5,7 @@
         <div class="py-3">
             <h2 class="text-center">Update Product</h2>
         </div>
-        <form class="row g-3 m-auto" autocomplete="off" action="{{ route('product-update',['id' => $product->id]) }}" method="put"
+        <form class="row g-3 m-auto" autocomplete="off" action="{{ route('product.update',['product' => $product->id]) }}" method="post"
             enctype="multipart/form-data">
             @method('PUT')
             @csrf
