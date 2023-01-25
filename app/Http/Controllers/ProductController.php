@@ -9,16 +9,21 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('product.index', ['products' => Product::all()]);
+        $products = Product::all();
+        return view('product.index', compact('products'));
     }
     public function create()
     {
-        return view('product.add');
+        return view('product.create-update', ['product' => false]);
     }
     public function store(Request $request)
     {
-        Product::create($request->all());
-        return redirect()->route('product.index');
+        $products = $request->all();
+        $imageName = $request->photo->getClientOriginalName();
+        $request->photo->move('upload/', $imageName);
+        $products['photo'] = $imageName;
+        Product::create($products);
+        return redirect()->route('products.index');
     }
     public function show($id)
     {
@@ -26,18 +31,26 @@ class ProductController extends Controller
     }
     public function edit($id)
     {
-        return view('product.edit', ['product' => Product::find($id)]);
+        return view('product.create-update', ['product' => Product::find($id)]);
     }
     public function update(Request $request, $id)
     {
-        $products = $request->except(['_method', '_token']);
-        Product::where('id', $id)->update($products);
-        return redirect()->route('product.index');
+        $products = $request->all();
+        if ($request->photo) {
+            $imageName = $request->photo->getClientOriginalName();
+            $request->photo->move('upload/', $imageName);
+            $products['photo'] = $imageName;
+            $updateProduct = $products;
+        } else {
+            $updateProduct = $products;
+        }
+        Product::find($id)->update($updateProduct);
+        return redirect()->route('products.index');
     }
     public function destroy($id)
     {
         $product = Product::find($id);
         $product->delete();
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
     }
 }

@@ -13,7 +13,7 @@
                     <div class="text-end pb-4 d-flex justify-content-between">
                         <input type="search" autocomplete="off" class="form-control w-25 me-5" id="search"
                             placeholder="search">
-                        <a class="btn btn-success shadow" href="{{ route('product.create') }}">Add</a>
+                        <a class="btn btn-success shadow" href="{{ route('products.create') }}">Add</a>
                     </div>
                     <div class="overflow-auto" style="height: 600px;">
 
@@ -38,10 +38,10 @@
                                         <td> {{ $product->created_at }}</td>
                                         <td>
                                             {{-- Edit Form data button --}}
-                                            <form action="{{ route('product.destroy',['product'=>$product->id])}}" method="post">
+                                            <form action="{{ route('products.destroy',['product'=>$product->id])}}" method="post">
                                                 @method('delete')
                                                 @csrf
-                                                <a href="{{ route('product.edit', ['product' => $product->id]) }}"
+                                                <a href="{{ route('products.edit', ['product' => $product->id]) }}"
                                                     class="btn btn-success shadow bi bi-pencil me-3 editBT"></a>
                                                 <button type="submit" class="btn btn-danger bi bi-trash"></button>
                                             </form>
@@ -59,12 +59,12 @@
                                             <td> {{ $value->created_at }}</td>
                                             <td>
                                                 {{-- Edit Form data button --}}
-                                                <form action="{{ route('product.destroy',['product'=>$value->id])}}" method="post">
+                                                <form action="{{ route('products.destroy',['product'=>$value->id])}}" method="post">
                                                     @method('delete')
                                                     @csrf
-                                                    <a href="{{ route('product.show', ['product' => $value->id]) }}"
+                                                    <a href="{{ route('products.show', ['product' => $value->id]) }}"
                                                         class="btn btn-primary bi bi-eye"></a>
-                                                    <a href="{{route('product.edit',['product'=>$value->id])}}"
+                                                    <a href="{{route('products.edit',['product'=>$value->id])}}"
                                                         class="btn btn-success shadow bi bi-pencil me-3 editBT"></a>
                                                     <button type="submit" class="btn btn-danger bi bi-trash"></button>  {{--delete button--}}
                                                 </form>

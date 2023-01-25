@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ps-2">
                 <li class="nav-item">
-                    <a href="/product/" class="nav-link fs-4">Product</a>
+                    <a href="{{ route('products.index') }}" class="nav-link fs-4">Product</a>
                 </li>
             </ul>
             <ul class="navbar-nav d-flex">
