@@ -9,7 +9,7 @@
 </head>
 <nav class="navbar navbar-expand-lg sticky-top shadow navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand fs-3 fw-bold" href="/">Shopping Mart</a>
+        <a class="navbar-brand fs-3 fw-bold" href="/">School </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ps-2">
                 <li class="nav-item">
-                    <a href="/product/" class="nav-link fs-4">Product</a>
+                    <a href="{{route('student.index')}}" class="nav-link fs-4">student</a>
                 </li>
             </ul>
             <ul class="navbar-nav d-flex">
@@ -35,7 +35,6 @@
         </div>
     </div>
 </nav>
-
 <body>
     @yield('body')
 </body>
