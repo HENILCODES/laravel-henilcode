@@ -14,13 +14,18 @@ class ProductController extends Controller
     }
     public function create()
     {
-        return view('product.create-update', ['product' => false]);
+        return view('product.create-update');
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:5',
+            'price' => 'required',
+            'photo' => 'required|image'
+        ]);
         $products = $request->all();
         $imageName = $request->photo->getClientOriginalName();
-        $request->photo->move('upload/', $imageName);
+        // $request->photo->move('upload/', $imageName);
         $products['photo'] = $imageName;
         Product::create($products);
         return redirect()->route('products.index');
@@ -35,6 +40,12 @@ class ProductController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|min:5|unique:products,name',
+            'price' => 'required',
+            'photo' => 'image|mimes:png|size:100'
+        ]);
+
         $products = $request->all();
         if ($request->photo) {
             $imageName = $request->photo->getClientOriginalName();
