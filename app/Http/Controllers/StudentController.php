@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -14,7 +16,8 @@ class StudentController extends Controller
     public function index()
     {
         //
-        return view('student.index');
+        $students = Student::all();
+        return view('student.index', compact('students'));
     }
 
     /**
@@ -37,6 +40,16 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required'
+        ]);
+        $students = $request->except(['_token']);
+        $students['hobby'] = implode(',', $request->hobby);
+        $imageName = $request->photo->getClientOriginalName();
+        $students['photo'] = $imageName;
+        $request->photo->move('upload/', $imageName);
+        Student::create($students);
+        return redirect()->route('student.index');
     }
 
     /**
@@ -47,8 +60,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
-        return view('student.show');
+        return view('student.show', ['student' => Student::find($id)]);
     }
 
     /**
@@ -60,7 +72,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         //
-        return view('student.update');
+        return view('student.update', ['student' => Student::find($id)]);
     }
 
     /**
@@ -72,7 +84,21 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+        $students = $request->except(['_token']);
+        $students['hobby'] = implode(',', $request->hobby);
+        if ($request->photo) {
+            $imageName = $request->photo->getClientOriginalName();
+            $request->photo->move('upload/', $imageName);
+            $students['photo'] = $imageName;
+            $updateList = $students;
+        } else {
+            $updateList = $students;
+        }
+        Student::find($id)->update($updateList);
+        return redirect()->route('student.index');
     }
 
     /**
@@ -84,6 +110,7 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+        Student::find($id)->delete();
         return redirect()->route('student.index');
     }
 }

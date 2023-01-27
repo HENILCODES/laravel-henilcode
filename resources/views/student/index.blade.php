@@ -27,23 +27,26 @@
                 <th>Action </th>
             </thead>
             <tbody class="text-center">
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>5</td>
-                    <td>10</td>
-                    <td>11</td>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>
-                        <form action="{{ route('student.destroy', ['student' => '1']) }}" method="post">
-                            @method('delete')
-                            @csrf
-                            <a href="{{ route('student.show', ['student' => '1']) }}" class="bi bi-eye btn btn-primary"></a>
-                            <button type="submit" class="bi bi-trash btn btn-danger"></button>
-                        </form>
-                    </td>
-                </tr>
+                @foreach ($students as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td><img src="upload/{{ $item->photo }}" width="50px" height="50px" alt=""></td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->contact }}</td>
+                        <td>{{ $item->semester }}</td>
+                        <td>{{ $item->dob }}</td>
+                        <td>
+                            <form action="{{ route('student.destroy', ['student' => $item->id]) }}" method="post">
+                                @method('delete')
+                                @csrf
+                                <a href="{{ route('student.show', ['student' => $item->id]) }}"
+                                    class="bi bi-eye btn btn-primary"></a>
+                                <button type="submit" class="bi bi-trash btn btn-danger"></button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

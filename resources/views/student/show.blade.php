@@ -35,27 +35,27 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="text-center">1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
+                    <td>{{ $student->id }}</td>
+                    <td>{{ $student->name }}</td>
+                    <td>{{ $student->email }}</td>
+                    <td>{{ $student->password }}</td>
+                    <td>{{ $student->contact }}</td>
+                    <td>{{ $student->semester }}</td>
+                    <td>{{ $student->hobby }}</td>
+                    <td>{{ $student->gender }}</td>
                     <td>
                         <div class="Fav_color shadow-lg border border-dark rounded"
-                            style="background-color: aqua !important;"></div>
+                            style="background-color:{{ $student->color }};"></div>
                     </td>
-                    <td>10</td>
-                    <td>11</td>
-                    <td>12</td>
-                    <td>13</td>
+                    <td>{{ $student->intrest }}</td>
+                    <td>{{ $student->dob }}</td>
+                    <td>{{ $student->url }}</td>
+                    <td>{{ $student->photo }}</td>
                     <td class="text-center">
-                        <form action="{{ route('student.destroy', ['student' => '1']) }}" method="post">
+                        <form action="{{ route('student.destroy', ['student' => $student->id]) }}" method="post">
                             @method('delete')
                             @csrf
-                            <a href="{{ route('student.edit', ['student' => '1']) }}"
+                            <a href="{{ route('student.edit', ['student' => $student->id]) }}"
                                 class="bi bi-pencil btn btn-warning"></a>
                             <button type="submit" class="bi bi-trash btn btn-danger"></button>
                         </form>

@@ -6,30 +6,45 @@
         </div>
         <div class="container">
             <div class="card rounded float-end w-25">
-                <img class="card-img-top" src="../upload/" alt="">
+                <img class="card-img-top" src="{{ url('upload/' . $student->photo) }}" width="200px" height="300px"
+                    alt="{{ $student->photo }}">
                 <div class="card-body">
                     <label for="photo" class="btn btn-primary">Change</label>
                 </div>
-                <input required type="file" class="form-control form-control-lg" name="photo" accept="image/*">
+                @if ($errors->any())
+                    <div class="alert mt-5 alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
-        <form class="row g-3 w-50 m-auto" action="PHP/insert.php" method="post" enctype="multipart/form-data">
+        <form class="row g-3 w-50 m-auto" action="{{ route('student.update', ['student' => $student->id]) }}" method="post"
+            enctype="multipart/form-data">
+            @method('put')
+            @csrf
             <div class="input-group">
                 <spna class="input-group-text w-25 justify-content-center">Student name</spna>
-                <input required type="text" class="form-control" name="sname" placeholder="Student name"
-                    id="sname">
+                <input type="text" class="form-control" name="name" value="{{ $student->name }}"
+                    placeholder="Student name" id="sname">
             </div>
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Password</span>
-                <input required type="password" class="form-control" name="spassword" placeholder="Password" id="spassword">
+                <input type="password" class="form-control" value="{{ $student->password }}" name="password"
+                    placeholder="Password" id="spassword">
             </div>
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Email</span>
-                <input required type="email" class="form-control" name="semail" placeholder="email" id="sEmail">
+                <input type="email" class="form-control" name="email" value="{{ $student->email }}" placeholder="email"
+                    id="sEmail">
             </div>
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Contact</span>
-                <input required type="tel" class="form-control" name="scontact" placeholder="contact number" id="scontact">
+                <input type="tel" value="{{ $student->contact }}" class="form-control" name="contact"
+                    placeholder="contact number" id="scontact">
             </div>
             <div class="input-group">
                 <label class="input-group-text">Semester</label>
@@ -72,20 +87,19 @@
             <div class="input-group">
                 <label class="input-group-text">Gender</label>
                 <div class="form-check m-2">
-                    <input required class="form-check-input" type="radio" id="male" name="gender" value="Male">
+                    <input class="form-check-input" type="radio" id="male" name="gender" value="Male">
                     <label class="form-check-label" for="male">
                         Male
                     </label>
                 </div>
                 <div class="form-check m-2">
-                    <input required class="form-check-input" type="radio" id="female" name="gender"
-                        value="Female">
+                    <input class="form-check-input" type="radio" id="female" name="gender" value="Female">
                     <label class="form-check-label" for="female">
                         Female
                     </label>
                 </div>
                 <div class="form-check m-2">
-                    <input required class="form-check-input" type="radio" id="otherGender" checked name="gender"
+                    <input class="form-check-input" type="radio" id="otherGender" checked name="gender"
                         value="Other">
                     <label class="form-check-label" for="otherGender">
                         Other
@@ -94,21 +108,26 @@
             </div>
             <div class="input-group w-50">
                 <label class="input-group-text">favorite Color </label>
-                <input required type="color" name="sfcolor" id="fvcolor" class="form-control form-control-color">
+                <input type="color" value="{{ $student->color }}" name="color" id="fvcolor"
+                    class="form-control form-control-color">
             </div>
             <div class="input-group">
                 <label class="input-group-text">interest in coding</label>
-                <input required type="range" class="form-control" id="intrest" name="intrestcoding" min="0"
-                    max="100" value="0">
+                <input type="range" value="{{ $student->intrest }}" class="form-control" id="intrest"
+                    name="intrest" min="0" max="100" value="0">
             </div>
             <div class="input-group">
                 <label class="input-group-text">Dob </label>
-                <input required type="date" name="dob" id="dob" class="form-control">
+                <input type="date" value="{{ $student->dob }}" name="dob" id="dob" class="form-control">
             </div>
             <div class="input-group">
                 <label class="input-group-text">WebSite </label>
-                <input required type="url" class="form-control" id="website" name="website"
+                <input type="url" class="form-control" value="{{ $student->url }}" id="website" name="url"
                     placeholder="https://">
+            </div>
+            <div class="input-group">
+                <input type="file" class="form-control form-control-lg" id="photo" name="photo"
+                    accept="image/*">
             </div>
             <div class="mt-5 text-center">
                 <button class="btn btn-primary w-50">Update</button>
