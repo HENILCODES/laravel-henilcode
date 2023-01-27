@@ -30,6 +30,8 @@
                 <th>Date of Birth</th>
                 <th>Website</th>
                 <th>Photo</th>
+                <th>Update</th>
+                <th>Create</th>
                 <th>Action</a>
                 </th>
             </thead>
@@ -51,6 +53,8 @@
                     <td>{{ $student->dob }}</td>
                     <td>{{ $student->url }}</td>
                     <td>{{ $student->photo }}</td>
+                    <td>{{ $student->updated_at }}</td>
+                    <td>{{ $student->created_at }}</td>
                     <td class="text-center">
                         <form action="{{ route('student.destroy', ['student' => $student->id]) }}" method="post">
                             @method('delete')

@@ -19,11 +19,12 @@
             @csrf
             <div class="input-group">
                 <spna class="input-group-text w-25 justify-content-center">Student name</spna>
-                <input type="text" class="form-control" name="name" placeholder="Student name" id="sname">
+                <input type="text" class="form-control" name="name" placeholder="Student name"
+                    value="{{ old('name') }}" id="sname">
             </div>
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Password</span>
-                <input type="password" class="form-control" name="password" placeholder="Password" id="spassword">
+                <input value="{{old('password')}}" type="password" class="form-control" name="password" placeholder="Password" id="spassword">
             </div>
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Email</span>
@@ -36,7 +37,7 @@
 
             <div class="input-group">
                 <label class="input-group-text">Semester</label>
-                <select class="form-select" name="semester[]" id="sem">
+                <select class="form-select" name="semester" id="sem">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
