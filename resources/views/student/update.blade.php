@@ -11,15 +11,6 @@
                 <div class="card-body">
                     <label for="photo" class="btn btn-primary">Change</label>
                 </div>
-                @if ($errors->any())
-                    <div class="alert mt-5 alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
             </div>
         </div>
         <form class="row g-3 w-50 m-auto" action="{{ route('student.update', ['student' => $student->id]) }}" method="post"
@@ -31,21 +22,26 @@
                 <input type="text" class="form-control" name="name" value="{{ $student->name }}"
                     placeholder="Student name" id="sname">
             </div>
+            @error('name') <span class="text-danger text-end"> {{ $message }}</span>@enderror
+            
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Password</span>
                 <input type="password" class="form-control" value="{{ $student->password }}" name="password"
-                    placeholder="Password" id="spassword">
+                placeholder="Password" id="spassword">
             </div>
+            @error('password') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Email</span>
                 <input type="email" class="form-control" name="email" value="{{ $student->email }}" placeholder="email"
-                    id="sEmail">
+                id="sEmail">
             </div>
+            @error('email') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Contact</span>
                 <input type="tel" value="{{ $student->contact }}" class="form-control" name="contact"
                     placeholder="contact number" id="scontact">
             </div>
+            @error('contact') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <label class="input-group-text">Semester</label>
                 <select class="form-select" name="semester" id="sem">
@@ -84,6 +80,7 @@
                     </label>
                 </div>
             </div>
+            @error('hobby') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <label class="input-group-text">Gender</label>
                 <div class="form-check m-2">
@@ -101,7 +98,7 @@
                 <div class="form-check m-2">
                     <input class="form-check-input" type="radio" id="otherGender" checked name="gender"
                         value="Other">
-                    <label class="form-check-label" for="otherGender">
+                        <label class="form-check-label" for="otherGender">
                         Other
                     </label>
                 </div>
@@ -109,7 +106,7 @@
             <div class="input-group w-50">
                 <label class="input-group-text">favorite Color </label>
                 <input type="color" value="{{ $student->color }}" name="color" id="fvcolor"
-                    class="form-control form-control-color">
+                class="form-control form-control-color">
             </div>
             <div class="input-group">
                 <label class="input-group-text">interest in coding</label>
@@ -117,18 +114,21 @@
                     name="intrest" min="0" max="100" value="0">
             </div>
             <div class="input-group">
-                <label class="input-group-text">Dob </label>
+                <label class="input-group-text">Date Of Birth </label>
                 <input type="date" value="{{ $student->dob }}" name="dob" id="dob" class="form-control">
             </div>
+            @error('dob') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <label class="input-group-text">WebSite </label>
                 <input type="url" class="form-control" value="{{ $student->url }}" id="website" name="url"
-                    placeholder="https://">
+                placeholder="https://">
             </div>
+            @error('url') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <input type="file" class="form-control form-control-lg" id="photo" name="photo"
-                    accept="image/*">
+                accept="image/*">
             </div>
+            @error('photo') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="mt-5 text-center">
                 <button class="btn btn-primary w-50">Update</button>
             </div>

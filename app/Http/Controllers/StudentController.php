@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FormValidation;
+use App\Http\Requests\StoreStudentRequest;
+use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
-use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -17,7 +17,7 @@ class StudentController extends Controller
     {
         return view('student.create');
     }
-    public function store(FormValidation $request)
+    public function store(StoreStudentRequest $request)
     {
         $student = $request->all();
         $student['hobby'] = implode(',', $request->hobby);
@@ -37,8 +37,9 @@ class StudentController extends Controller
         $student = Student::find($id);
         return view('student.update', compact('student'));
     }
-    public function update(FormValidation $request, $id)
+    public function update(UpdateStudentRequest $request, $id)
     {
+
         $student = $request->all();
         $student['hobby'] = implode(',', $request->hobby);
         if ($request->photo) {
