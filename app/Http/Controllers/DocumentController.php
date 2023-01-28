@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateDocumentRequest;
+use App\Http\Requests\UpdateDocumentRequest;
 use App\Models\Document;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,7 @@ class DocumentController extends Controller
         return view('document.update', compact('document'));
     }
 
-    public function update(CreateDocumentRequest $request, $id)
+    public function update(UpdateDocumentRequest $request, $id)
     {
         $document = $request->all();
         if ($request->photo) {

@@ -13,4 +13,15 @@ class Document extends Model
         'photo',
         'student_id'
     ];
+    public function getCreatedAtAttribute($values)
+    {
+        return date('d-M-y h:i:s a', strtotime($values));
+    }
+    public function setTypeAttribute($values){
+        $this->attributes['type'] = ucwords($values);
+    }
+    public function getUpdatedAtAttribute($values)
+    {
+        return date('d-M-y h:i:s a', strtotime($values));
+    }
 }

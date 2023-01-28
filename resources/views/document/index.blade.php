@@ -13,6 +13,8 @@
                 <th>Student ID</th>
                 <th>Type</th>
                 <th>Photo</th>
+                <th>update</th>
+                <th>Create</th>
                 <th>Action </th>
             </thead>
             <tbody>
@@ -22,6 +24,8 @@
                         <td>{{ $item->student_id }} </td>
                         <td>{{ $item->type }} </td>
                         <td> <img src="upload/document/{{ $item->photo }}" width="50px" height="50px" > </td>
+                        <td>{{$item->updated_at}}</td>
+                        <td>{{$item->created_at}}</td>
                         <td>
                             <form action="{{ route('document.destroy', ['document' => $item->id]) }}" method="post">
                                 @method('delete')

@@ -23,7 +23,9 @@
                     placeholder="Student name">
             </div>
             @error('student_id')
-                {{ $message }}
+                <div class="text-end text-danger">
+                    {{ $message }}
+                </div>
             @enderror
             <div class="input-group">
                 <spna class="input-group-text w-25 justify-content-center">Document Type</spna>
@@ -38,14 +40,18 @@
                 </datalist>
             </div>
             @error('type')
-                {{ $message }}
+                <div class="text-end text-danger">
+                    {{ $message }}
+                </div>
             @enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Document Photo</span>
                 <input type="file" class="form-control form-control-lg" name="photo" id="photo" accept="image/*">
             </div>
             @error('photo')
-                {{ $message }}
+                <div class="text-end text-danger">
+                    {{ $message }}
+                </div>
             @enderror
             <div class="mt-5 text-center">
                 <button class="btn btn-primary w-50">Update</button>

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateDocumentRequest extends FormRequest
+class UpdateDocumentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class CreateDocumentRequest extends FormRequest
         return [
             'type' => 'required',
             'student_id' => 'required',
-            'photo' => 'required|mimes:jpg,png,ico'
+            'photo' => 'mimes:png|ico|jpg'
         ];
     }
 }
