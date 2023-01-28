@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -19,3 +21,4 @@ Route::get('/', function () {
 });
 
 Route::resource('student', StudentController::class);
+Route::resource('document', DocumentController::class);
