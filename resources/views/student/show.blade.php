@@ -52,7 +52,7 @@
                     <td>{{ $student->intrest }}</td>
                     <td>{{ $student->dob }}</td>
                     <td>{{ $student->url }}</td>
-                    <td>{{ $student->photo }}</td>
+                    <td> <img src="{{url('upload/profile/'.$student->photo)}}" width="100px"  alt="{{$student->photo}}" ></td>
                     <td>{{ $student->updated_at }}</td>
                     <td>{{ $student->created_at }}</td>
                     <td class="text-center">

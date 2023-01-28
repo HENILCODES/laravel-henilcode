@@ -6,7 +6,7 @@
         </div>
         <div class="container">
             <div class="card rounded float-end w-25">
-                <img class="card-img-top" src="{{ url('upload/' . $student->photo) }}" width="200px" height="300px"
+                <img class="card-img-top" src="{{ url('upload/profile/' . $student->photo) }}" width="200px" height="300px"
                     alt="{{ $student->photo }}">
                 <div class="card-body">
                     <label for="photo" class="btn btn-primary">Change</label>

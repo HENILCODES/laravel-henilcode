@@ -26,10 +26,6 @@ class Student extends Model
     {
         $this->attributes['name'] = ucwords($value);
     }
-    function getDobAttribute($value)
-    {
-        return date('d-M-y ',strtotime($value));
-    }
     function getUpdatedAtAttribute($value){
         return date('d-M-y l h:i:s a',strtotime($value));
     }

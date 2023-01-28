@@ -23,7 +23,7 @@ class StudentController extends Controller
         $student['hobby'] = implode(',', $request->hobby);
         $imageName = $request->photo->getClientOriginalName();
         $student['photo'] = $imageName;
-        $request->photo->move('upload/', $imageName);
+        $request->photo->move('upload/profile/', $imageName);
         Student::create($student);
         return redirect()->route('student.index');
     }
@@ -44,7 +44,7 @@ class StudentController extends Controller
         $student['hobby'] = implode(',', $request->hobby);
         if ($request->photo) {
             $imageName = $request->photo->getClientOriginalName();
-            $request->photo->move('upload/', $imageName);
+            $request->photo->move('upload/profile/', $imageName);
             $student['photo'] = $imageName;
             $updateList = $student;
         } else {

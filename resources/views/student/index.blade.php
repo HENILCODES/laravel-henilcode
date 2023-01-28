@@ -30,7 +30,7 @@
                 @foreach ($students as $item)
                     <tr>
                         <td>{{ $item->id }}</td>
-                        <td><img src="upload/{{ $item->photo }}" width="50px" height="50px" alt=""></td>
+                        <td><img src="{{url('upload/profile/'.$item->photo)}}" width="50px"alt=""></td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>{{ $item->contact }}</td>
