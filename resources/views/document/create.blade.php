@@ -9,7 +9,7 @@
             <div class="input-group">
                 <spna class="input-group-text w-25 justify-content-center @error('student_id') text-danger @enderror">
                     Studdent Id</spna>
-                <input type="number" class="form-control" name="student_id" value="{{old('student_id')}}"  placeholder="Student name">
+                <input type="number" class="form-control" name="student_id" value="{{old('student_id')}}"  placeholder="Student id">
             </div>
             @error('student_id')
                 <div class="text-end text-danger">

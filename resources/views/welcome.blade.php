@@ -22,7 +22,7 @@
                         <a href="{{ route('student.index') }}" class="text-decoration-none">
                             <div class="col bg-primary shadow-lg rounded-4" style="width: 250px;">
                                 <div class="pt-5 pe-5 ps-5">
-                                    <p class="d-flex align-items-center text-white justify-content-center fs-1 fw-bolder">0
+                                    <p class="d-flex align-items-center text-white justify-content-center fs-1 fw-bolder">{{$totalStudent}}
                                     </p>
                                 </div>
                                 <div class="text-center pb-5 pt-auto">
@@ -35,7 +35,7 @@
                         <a href="{{ route('document.index') }}" class="text-decoration-none">
                             <div class="col bg-primary shadow-lg rounded-4" style="width: 250px;">
                                 <div class="pt-5 pe-5 ps-5">
-                                    <p class="d-flex align-items-center text-white justify-content-center fs-1 fw-bolder">0
+                                    <p class="d-flex align-items-center text-white justify-content-center fs-1 fw-bolder">{{$totalDocument}}
                                     </p>
                                 </div>
                                 <div class="text-center pb-5 pt-auto">

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Document;
 
-use App\Http\Requests\CreateDocumentRequest;
-use App\Http\Requests\UpdateDocumentRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\document\StoreDocumentRequest;
+use App\Http\Requests\document\UpdateDocumentRequest;
 use App\Models\Document;
 use Illuminate\Http\Request;
 
@@ -11,15 +12,15 @@ class DocumentController extends Controller
 {
     public function index()
     {
-        $document = Document::all();
-        return view('document.index', compact('document'));
+        $documents = Document::all();
+        return view('document.index', compact('documents'));
     }
     public function create()
     {
         return view('document.create');
     }
 
-    public function store(CreateDocumentRequest $request)
+    public function store(StoreDocumentRequest $request)
     {
         $document = $request->all();
         $imageName = $request->photo->getClientOriginalName();
@@ -31,6 +32,7 @@ class DocumentController extends Controller
     public function show($id)
     {
         $document = Document::find($id);
+        return $document;
     }
     public function edit($id)
     {

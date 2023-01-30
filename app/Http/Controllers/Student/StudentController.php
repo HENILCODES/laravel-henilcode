@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
-use App\Http\Requests\StoreStudentRequest;
-use App\Http\Requests\UpdateStudentRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\student\StoreStudentRequest;
+use App\Http\Requests\student\UpdateStudentRequest as StudentUpdateStudentRequest;
 use App\Models\Student;
 
 class StudentController extends Controller
@@ -37,20 +38,16 @@ class StudentController extends Controller
         $student = Student::find($id);
         return view('student.update', compact('student'));
     }
-    public function update(UpdateStudentRequest $request, $id)
+    public function update(StudentUpdateStudentRequest $request, $id)
     {
-
         $student = $request->all();
         $student['hobby'] = implode(',', $request->hobby);
         if ($request->photo) {
             $imageName = $request->photo->getClientOriginalName();
             $request->photo->move('upload/profile/', $imageName);
             $student['photo'] = $imageName;
-            $updateList = $student;
-        } else {
-            $updateList = $student;
         }
-        Student::find($id)->update($updateList);
+        Student::find($id)->update($student);
         return redirect()->route('student.index');
     }
     public function destroy($id)

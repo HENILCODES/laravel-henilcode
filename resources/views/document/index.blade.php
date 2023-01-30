@@ -18,7 +18,7 @@
                 <th>Action </th>
             </thead>
             <tbody>
-                @foreach ($document as $item)
+                @foreach ($documents as $item)
                     <tr>
                         <td>{{ $item->id }} </td>
                         <td>{{ $item->student_id }} </td>
