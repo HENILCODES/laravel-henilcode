@@ -6,7 +6,6 @@ use App\Models\Document;
 use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Ramsey\Uuid\Uuid;
 
 /*
 |--------------------------------------------------------------------------

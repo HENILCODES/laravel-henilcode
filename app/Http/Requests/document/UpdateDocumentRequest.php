@@ -26,7 +26,7 @@ class UpdateDocumentRequest extends FormRequest
         return [
             'type' => 'required',
             'student_id' => 'required',
-            'photo' => 'mimes:png|ico|jpg'
+            'photo' => 'mimes:png,ico,jpg'
         ];
     }
 }

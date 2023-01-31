@@ -39,7 +39,6 @@ class DocumentController extends Controller
         $document = Document::find($id);
         return view('document.update', compact('document'));
     }
-
     public function update(UpdateDocumentRequest $request, $id)
     {
         $document = $request->all();
