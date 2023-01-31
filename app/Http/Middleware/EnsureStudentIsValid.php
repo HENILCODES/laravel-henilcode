@@ -16,9 +16,10 @@ class EnsureStudentIsValid
      */
     public function handle(Request $request, Closure $next)
     {
-        $student = [1, 2, 3, 4];
-        if (in_array($request->student_id,$student)) {
-            return "d";
+        $student = [1, 2, 3, 4, 5, 6, 7];
+        if ($request->student_id && !in_array($request->student_id, $student)) {
+            return redirect()->route('notfound');
+        } else {
         }
         return $next($request);
     }

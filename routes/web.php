@@ -22,4 +22,11 @@ Route::get('/', function () {
 });
 
 Route::resource('student', StudentController::class);
-Route::resource('document', DocumentController::class);
+
+Route::resource('document', DocumentController::class)->except('store');
+
+Route::post('document', [DocumentController::class => 'store'])->name('document.store');
+
+Route::get('pagenotfound', function () {
+    return "<h1>Data Not Found 404 </h1>";
+})->name('notfound');
