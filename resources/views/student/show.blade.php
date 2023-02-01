@@ -37,10 +37,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $student->id }}</td>
+                    <td>{{ Str::limit($student->id, 5)}}</td>
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->email }}</td>
-                    <td>{{ $student->password }}</td>
+                    <td>{{ Str::of($student->password)->mask('*',5) }}</td>
                     <td>{{ $student->contact }}</td>
                     <td>{{ $student->semester }}</td>
                     <td>{{ $student->hobby }}</td>

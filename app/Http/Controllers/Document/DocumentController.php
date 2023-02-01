@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class DocumentController extends Controller
 {
+    // public function __construct(){
+    //     // $this->middleware('studentIsValid');
+    //     // $this->middleware('studentIsValid')->only(['update']);
+    // }
     public function index()
     {
         $documents = Document::all();

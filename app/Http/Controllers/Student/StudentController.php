@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\student\StoreStudentRequest;
 use App\Http\Requests\student\UpdateStudentRequest as StudentUpdateStudentRequest;
 use App\Models\Student;
+use Illuminate\Support\Arr;
 
 class StudentController extends Controller
 {
@@ -22,9 +23,11 @@ class StudentController extends Controller
     {
         $student = $request->all();
         $student['hobby'] = implode(',', $request->hobby);
+        // Arr::join($request->hobby, ',');    
         $imageName = $request->photo->getClientOriginalName();
-        $student['photo'] = $imageName;
+        // $student['photo'] = $imageName;
         $request->photo->move('upload/profile/', $imageName);
+        Arr::set($student, 'photo', $imageName);
         Student::create($student);
         return redirect()->route('student.index');
     }
@@ -42,10 +45,12 @@ class StudentController extends Controller
     {
         $student = $request->all();
         $student['hobby'] = implode(',', $request->hobby);
+        // Arr::join($request->hobby,',');
         if ($request->photo) {
             $imageName = $request->photo->getClientOriginalName();
             $request->photo->move('upload/profile/', $imageName);
-            $student['photo'] = $imageName;
+            Arr::set($student, 'photo', $imageName);
+            // $student['photo'] = $imageName;
         }
         Student::find($id)->update($student);
         return redirect()->route('student.index');

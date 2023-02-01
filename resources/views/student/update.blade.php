@@ -1,8 +1,9 @@
 @extends('layout')
+<title>Update Student Form</title>
 @section('body')
     <div class="container my-3">
         <div class="text-center">
-            <h1>Update Student</h1>
+            <h1>{{ toUpperCase('Update Student') }}</h1>
         </div>
         <div class="container">
             <div class="card rounded float-end w-25">
