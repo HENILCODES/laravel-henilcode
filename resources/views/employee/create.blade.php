@@ -2,46 +2,34 @@
 @section('body')
     <div class="container my-3">
         <div class="text-center">
-            <h1>New Student</h1>
+            <h1>New Employee</h1>
         </div>
-        <form class="row g-3 w-50 m-auto" action="{{ route('student.store') }}" method="post" enctype="multipart/form-data">
+        <form class="row g-3 w-50 m-auto" action="{{ route('employee.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="input-group">
-                <spna class="input-group-text w-25 justify-content-center">Student name</spna>
-                <input type="text" class="form-control" name="name" placeholder="Student name"
-                    value="{{ old('name') }}" id="sname">
+                <spna class="input-group-text w-25 justify-content-center">Employee name</spna>
+                <input type="text" class="form-control" name="name" placeholder="Employee name">
             </div>
-            @error('name') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Password</span>
-                <input value="{{ old('password') }}" type="password" class="form-control" name="password"
-                placeholder="Password" id="spassword">
+                <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
-            @error('password') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Email</span>
-                <input type="email" value="{{ old('email') }}" class="form-control" name="email" placeholder="email"
-                    id="sEmail">
+                <input type="email" class="form-control" name="email" placeholder="email">
             </div>
-            @error('email') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Contact</span>
-                <input type="tel" class="form-control" name="contact" placeholder="contact number" id="scontact">
+                <input type="tel" class="form-control" name="contact" placeholder="contact number">
             </div>
-            @error('contact') <span class="text-danger text-end"> {{ $message }}</span>@enderror
-            
             <div class="input-group">
-                <label class="input-group-text">Semester</label>
-                <select class="form-select" name="semester" id="sem">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                <label class="input-group-text">Job Type</label>
+                <select class="form-select" name="type">
+                    <option value="Full time">Full Time</option>
+                    <option value="part time">Part Time</option>
+                    <option value="Remote">Remote</option>
                 </select>
             </div>
-            @error('semester') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <label class="input-group-text">Hobby</label>
                 <div class="form-check m-2">
@@ -69,7 +57,6 @@
                     </label>
                 </div>
             </div>
-            @error('hobby') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <label class="input-group-text">Gender</label>
                 <div class="form-check m-2">
@@ -85,38 +72,41 @@
                     </label>
                 </div>
                 <div class="form-check m-2">
-                    <input class="form-check-input" type="radio" id="otherGender" checked name="gender"
-                        value="other">
+                    <input class="form-check-input" type="radio" id="otherGender" checked name="gender" value="other">
                     <label class="form-check-label" for="otherGender">
                         Other
                     </label>
                 </div>
             </div>
-            @error('gender') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group w-50">
                 <label class="input-group-text">favorite Color </label>
-                <input type="color" name="color" id="fvcolor" class="form-control form-control-color">
+                <input type="color" name="color" class="form-control form-control-color">
             </div>
             <div class="input-group">
-                <label class="input-group-text">interest in coding</label>
-                <input type="range" class="form-control" id="intrest" name="intrest" min="0" max="100"
+                <label class="input-group-text">Experience</label>
+                <input type="range" class="form-control" name="experience" min="0" max="100"
                     value="0">
             </div>
             <div class="input-group">
                 <label class="input-group-text">Date Of Birth </label>
-                <input type="date" name="dob" id="dob" class="form-control">
+                <input type="date" name="dob" class="form-control">
             </div>
-            @error('dob') <span class="text-danger text-end"> {{ $message }}</span>@enderror
+            <div class="input-group">
+                <label class="input-group-text">Time </label>
+                <input type="time" name="time" class="form-control">
+            </div>
             <div class="input-group">
                 <label class="input-group-text">WebSite </label>
                 <input type="url" class="form-control" id="website" name="url" placeholder="https://">
             </div>
-            @error('url') <span class="text-danger text-end"> {{ $message }}</span>@enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Photo</span>
                 <input type="file" class="form-control form-control-lg" name="photo" accept="image/*">
             </div>
-            @error('photo') <span class="text-danger text-end"> {{ $message }}</span>@enderror
+            <div class="input-group">
+                <span class="input-group-text w-25 justify-content-center">Address</span>
+                <textarea class="form-control form-control-lg"></textarea>
+            </div>
             <div class="mt-5 text-center">
                 <button class="btn btn-primary w-50">Submit</button>
             </div>

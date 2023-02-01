@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
@@ -16,3 +17,5 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('employee', EmployeeController::class);
