@@ -1,9 +1,5 @@
 <?php
 
-use App\Http\Controllers\Document\DocumentController;
-use App\Http\Controllers\Student\StudentController;
-use App\Models\Document;
-use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
@@ -18,15 +14,5 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 */
 
 Route::get('/', function () {
-    return view('welcome', ['totalStudent' => count(Student::all()), 'totalDocument' => count(Document::all())]);
+    return view('welcome');
 });
-
-Route::resource('student', StudentController::class);
-
-Route::resource('document', DocumentController::class)->except('store');
-
-Route::post('document', [DocumentController::class => 'store'])->name('document.store');
-
-Route::get('pagenotfound', function () {
-    return "<h1>Data Not Found 404 </h1>";
-})->name('notfound');
