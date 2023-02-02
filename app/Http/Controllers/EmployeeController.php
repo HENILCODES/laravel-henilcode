@@ -42,7 +42,7 @@ class EmployeeController extends Controller
     public function store(StoreEmployeeRequest $request)
     {
         //
-        $employee = $request->except(['_token']);
+        $employee = $request->all();
         $imageName = $request->photo->getClientOriginalName();
         Arr::set($employee, 'photo', $imageName);
         $request->photo->move('upload/profile/',$imageName);

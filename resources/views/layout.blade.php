@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a href="{{route('employee.index')}}" class="nav-link fs-4">employee</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('user.index')}}" class="nav-link fs-4">User</a>
+                </li>
             </ul>
             <ul class="navbar-nav d-flex">
                 <li class="nav-item dropdown me-5 pe-5">
