@@ -18,12 +18,54 @@
             </div>
             <thead class="table-borderless text-center table-dark">
                 <th>ID</th>
+                <th>name</th>
+                <th>password</th>
+                <th>email</th>
+                <th>contact</th>
+                <th>type</th>
+                <th>color</th>
+                <th>hobby</th>
+                <th>address</th>
+                <th>experience</th>
+                <th>dob</th>
+                <th>time</th>
+                <th>url</th>
+                <th>photo</th>
+                <th>address</th>
+                <th>create</th>
+                <th>update</th>
                 <th>Action </th>
             </thead>
             <tbody class="text-center">
-                <tr>
-                    
-                </tr>
+                @foreach ($documents as $item)
+                    <tr>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->password }}</td>
+                        <td> {{ $item->email }}</td>
+                        <td>{{ $item->contact }}</td>
+                        <td>{{ $item->type }}</td>
+                        <td>{{ $item->color }}</td>
+                        <td>{{ $item->hobby }}</td>
+                        <td>{{ $item->address }}</td>
+                        <td>{{ $item->experience }}</td>
+                        <td>{{ $item->dob }}</td>
+                        <td>{{ $item->time }}</td>
+                        <td>{{ $item->url }}</td>
+                        <td> <img src="{{url('upload/profile/'.$item->photo)}}" width="50px" ></td>
+                        <td>{{ $item->address }}</td>
+                        <td>{{$item->created_at}}</td>
+                        <td>{{$item->updated_at}}</td>
+                        <td>
+                            <a href="{{route('employee.edit',['employee'=>$item->id])}}" class="btn btn-warning bi bi-pencil"></a>
+                            <form action="{{route('employee.destroy',['employee'=>$item->id])}}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger bi bi-trash"></button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

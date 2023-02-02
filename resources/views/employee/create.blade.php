@@ -10,18 +10,22 @@
                 <spna class="input-group-text w-25 justify-content-center">Employee name</spna>
                 <input type="text" class="form-control" name="name" placeholder="Employee name">
             </div>
+            @error('name') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Password</span>
                 <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
+            @error('pasword') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Email</span>
                 <input type="email" class="form-control" name="email" placeholder="email">
             </div>
+            @error('email') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Contact</span>
                 <input type="tel" class="form-control" name="contact" placeholder="contact number">
             </div>
+            @error('contact') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Job Type</label>
                 <select class="form-select" name="type">
@@ -30,6 +34,7 @@
                     <option value="Remote">Remote</option>
                 </select>
             </div>
+            @error('type') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Hobby</label>
                 <div class="form-check m-2">
@@ -57,6 +62,7 @@
                     </label>
                 </div>
             </div>
+            @error('hobby') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Gender</label>
                 <div class="form-check m-2">
@@ -78,35 +84,43 @@
                     </label>
                 </div>
             </div>
+            @error('gender') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group w-50">
                 <label class="input-group-text">favorite Color </label>
                 <input type="color" name="color" class="form-control form-control-color">
             </div>
+            @error('color') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Experience</label>
                 <input type="range" class="form-control" name="experience" min="0" max="100"
-                    value="0">
+                value="0">
             </div>
+            @error('exeperience') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Date Of Birth </label>
                 <input type="date" name="dob" class="form-control">
             </div>
+            @error('dob') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Time </label>
                 <input type="time" name="time" class="form-control">
             </div>
+            @error('time') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">WebSite </label>
                 <input type="url" class="form-control" id="website" name="url" placeholder="https://">
             </div>
+            @error('url') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Photo</span>
                 <input type="file" class="form-control form-control-lg" name="photo" accept="image/*">
             </div>
+            @error('photo') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Address</span>
-                <textarea class="form-control form-control-lg"></textarea>
+                <textarea class="form-control form-control-lg" name="address"></textarea>
             </div>
+            @error('address') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="mt-5 text-center">
                 <button class="btn btn-primary w-50">Submit</button>
             </div>

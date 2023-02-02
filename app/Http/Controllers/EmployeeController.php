@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreEmployeeRequest;
+use App\Http\Requests\UpdateEmployeeRequest;
+use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class EmployeeController extends Controller
 {
@@ -14,7 +18,8 @@ class EmployeeController extends Controller
     public function index()
     {
         //
-        return view('employee.index');
+        $documents = Employee::all();
+        return view('employee.index',compact('documents'));
     }
 
     /**
@@ -34,9 +39,18 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreEmployeeRequest $request)
     {
         //
+        $employee = $request->except(['_token']);
+        $imageName = $request->photo->getClientOriginalName();
+        Arr::set($employee, 'photo', $imageName);
+        $request->photo->move('upload/profile/',$imageName);
+        $employee['hobby'] = implode(',', $employee['hobby']);
+        // dd($employee);
+
+        Employee::create($employee);
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -47,7 +61,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = Employee::find($id);
+        // return;
     }
 
     /**
@@ -59,6 +74,8 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         //
+        $employee = Employee::find($id);
+        return view('employee.update',compact('employee'));
     }
 
     /**
@@ -68,9 +85,18 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEmployeeRequest $request, $id)
     {
         //
+        $employee = $request->all();
+        $employee['hobby'] = implode(',', $request->hobby);
+        if ($request->photo) {
+            $imageName = $request->photo->getClientOriginalName();
+            $request->photo->move('upload/profile/', $imageName);
+            Arr::set($employee, 'photo', $imageName);
+        }
+        Employee::find($id)->update($employee);
+        return redirect()->route('employee.index');
     }
 
     /**
@@ -82,5 +108,7 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         //
+        Employee::find($id)->delete();
+        return redirect()->route('employee.index');
     }
 }

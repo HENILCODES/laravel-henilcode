@@ -5,24 +5,38 @@
         <div class="text-center">
             <h1>Update Employee</h1>
         </div>
-        <form class="row g-3 w-50 m-auto" action="{{ route('employee.update') }}" method="post" enctype="multipart/form-data">
+        <div class="float-end">
+            <img src="{{url('upload/profile/'.$employee->photo)}}" width="200px" height="200px"> 
+        </div>
+        <form class="row g-3 w-50 m-auto" action="{{ route('employee.update', ['employee' => $employee->id]) }}" method="post"
+            enctype="multipart/form-data">
             @csrf
+            @method('put')
             <div class="input-group">
                 <spna class="input-group-text w-25 justify-content-center">Employee name</spna>
-                <input type="text" class="form-control" name="name" placeholder="Employee name">
+                <input type="text" class="form-control" name="name" value="{{ $employee->name }}"
+                    placeholder="Employee name">
             </div>
+            @error('name') <div class="text-end text-danger">{{$message}}</div> @enderror
+            
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Password</span>
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control" value="{{ $employee->password }}" name="password"
+                placeholder="Password">
             </div>
+            @error('password') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Email</span>
-                <input type="email" class="form-control" name="email" placeholder="email">
+                <input type="email" class="form-control" name="email" placeholder="email"
+                value="{{ $employee->email }}">
             </div>
+            @error('email') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Contact</span>
-                <input type="tel" class="form-control" name="contact" placeholder="contact number">
+                <input type="tel" class="form-control" name="contact" placeholder="contact number"
+                    value="{{ $employee->contact }}">
             </div>
+            @error('contact') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Job Type</label>
                 <select class="form-select" name="type">
@@ -31,6 +45,7 @@
                     <option value="Remote">Remote</option>
                 </select>
             </div>
+            @error('type') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Hobby</label>
                 <div class="form-check m-2">
@@ -58,6 +73,7 @@
                     </label>
                 </div>
             </div>
+            @error('hobby') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Gender</label>
                 <div class="form-check m-2">
@@ -79,35 +95,42 @@
                     </label>
                 </div>
             </div>
+            @error('gender') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group w-50">
                 <label class="input-group-text">favorite Color </label>
-                <input type="color" name="color" class="form-control form-control-color">
+                <input type="color" name="color" value="{{$employee->color}}" class="form-control form-control-color">
             </div>
+            @error('color') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Experience</label>
                 <input type="range" class="form-control" name="experience" min="0" max="100"
-                    value="0">
+                value="{{$employee->experience}}">
             </div>
+            @error('experience') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Date Of Birth </label>
-                <input type="date" name="dob" class="form-control">
+                <input type="date" name="dob" value="{{$employee->dob}}" class="form-control">
             </div>
+            @error('dob') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">Time </label>
-                <input type="time" name="time" class="form-control">
+                <input type="time" name="time" class="form-control" value="{{$employee->time}}">
             </div>
+            @error('time') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <label class="input-group-text">WebSite </label>
-                <input type="url" class="form-control" id="website" name="url" placeholder="https://">
+                <input type="url" class="form-control" id="website" name="url" value="{{$employee->url}}" placeholder="https://">
             </div>
+            @error('url') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Photo</span>
                 <input type="file" class="form-control form-control-lg" name="photo" accept="image/*">
             </div>
             <div class="input-group">
                 <span class="input-group-text w-25 justify-content-center">Address</span>
-                <textarea class="form-control form-control-lg"></textarea>
+                <textarea class="form-control form-control-lg" name="address">{{$employee->address}}</textarea>
             </div>
+            @error('address') <div class="text-end text-danger">{{$message}}</div> @enderror
             <div class="mt-5 text-center">
                 <button class="btn btn-primary w-50">Update</button>
             </div>
