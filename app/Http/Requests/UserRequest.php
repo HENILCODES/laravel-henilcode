@@ -29,6 +29,7 @@ class UserRequest extends FormRequest
             'password'=>'required',
             'email'=>'required',
             'roll'=>'required',
+            'state'=>'required',
         ];
     }
 }

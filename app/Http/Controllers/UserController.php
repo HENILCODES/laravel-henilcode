@@ -26,7 +26,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
         return view('user.create');
     }
 
@@ -43,7 +42,7 @@ class UserController extends Controller
         User::create($user);
         return redirect()->route('user.index');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -54,7 +53,7 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-        return view('user.show',compact('user'));
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -67,7 +66,7 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-        return view('user.update', compact('user'));
+        return view('user.edit',compact('user'));
     }
 
     /**
