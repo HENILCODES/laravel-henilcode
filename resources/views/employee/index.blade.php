@@ -12,7 +12,7 @@
         <table class="table table-primary table-responsive table-bordered">
             <div class="p-3 d-flex  mx-5">
                 <div class="text-center w-100">
-                    <h1>Student</h1>
+                    <h1>Employee</h1>
                 </div>
                 <a class="ms-2 btn btn-success bi bi-plus-square fs-3" href="{{ route('employee.create') }}"></a>
             </div>
@@ -52,7 +52,7 @@
                         <td>{{ $item->dob }}</td>
                         <td>{{ $item->time }}</td>
                         <td>{{ $item->url }}</td>
-                        <td> <img src="{{url('upload/profile/'.$item->photo)}}" width="50px" ></td>
+                        <td> <img src="{{asset('storage/upload/profile/'.$item->photo)}}" width="50px" ></td>
                         <td>{{ $item->address }}</td>
                         <td>{{$item->created_at}}</td>
                         <td>{{$item->updated_at}}</td>

@@ -23,7 +23,7 @@
 
 <div class="input-group my-5">
     <label class="input-group-text">State</label>
-    <select name="state" class="form-select">
+    <select name="state" class="form-select" >
         <option>Gujrat</option>
         <option>Goa</option>
         <option>Bihar</option>

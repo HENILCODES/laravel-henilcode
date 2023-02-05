@@ -19,7 +19,7 @@ class EmployeeController extends Controller
     {
         //
         $documents = Employee::all();
-        return view('employee.index',compact('documents'));
+        return view('employee.index', compact('documents'));
     }
 
     /**
@@ -45,7 +45,7 @@ class EmployeeController extends Controller
         $employee = $request->all();
         $imageName = $request->photo->getClientOriginalName();
         Arr::set($employee, 'photo', $imageName);
-        $request->photo->move('upload/profile/',$imageName);
+        $request->photo->move(storage_path('app/public/upload/profile/'), $imageName);
         $employee['hobby'] = implode(',', $employee['hobby']);
         // dd($employee);
 
@@ -75,7 +75,7 @@ class EmployeeController extends Controller
     {
         //
         $employee = Employee::find($id);
-        return view('employee.update',compact('employee'));
+        return view('employee.update', compact('employee'));
     }
 
     /**
@@ -92,7 +92,7 @@ class EmployeeController extends Controller
         $employee['hobby'] = implode(',', $request->hobby);
         if ($request->photo) {
             $imageName = $request->photo->getClientOriginalName();
-            $request->photo->move('upload/profile/', $imageName);
+            $request->photo->move(storage_path('app/public/upload/profile/'), $imageName);
             Arr::set($employee, 'photo', $imageName);
         }
         Employee::find($id)->update($employee);

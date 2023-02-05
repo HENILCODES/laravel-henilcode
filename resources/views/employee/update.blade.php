@@ -6,7 +6,7 @@
             <h1>Update Employee</h1>
         </div>
         <div class="float-end">
-            <img src="{{url('upload/profile/'.$employee->photo)}}" width="200px" height="200px"> 
+            <img src="{{asset('storage/upload/profile/'.$employee->photo)}}" width="200px" height="200px"> 
         </div>
         <form class="row g-3 w-50 m-auto" action="{{ route('employee.update', ['employee' => $employee->id]) }}" method="post"
             enctype="multipart/form-data">
