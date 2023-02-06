@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <title>{{env('APP_NAME')}}</title>
 </head>
 <nav class="navbar navbar-expand-lg sticky-top shadow navbar-light bg-light">
     <div class="container-fluid">
@@ -41,5 +42,5 @@
 <body>
     @yield('body')
 </body>
-<script src="{{asset('js/bootstrap.js')}}"></script>
+<script src="/js/bootstraps.js"></script>
 </html>
