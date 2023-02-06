@@ -10446,6 +10446,7 @@ fieldset:disabled .btn {
   .d-print-table-cell {
     display: table-cell !important;
   }
+  
   .d-print-flex {
     display: flex !important;
   }
